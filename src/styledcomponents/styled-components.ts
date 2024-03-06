@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const AppWrapper = styled.div`
+export const AppWrapper = styled.div<{ bgc?: string, color?: string }>`
 padding:20px 0;
 position:absolute;
 width:100%;
 min-height:100%;
-background-color: #000000;
-color:white;
+background-color:${props => props.bgc};
+color:${props => props.color};
 /* padding:2rem; */
 `
 export const Main = styled.div<{ wid?: string, hig?: string, disp?: string }>`
@@ -17,6 +17,9 @@ display:${props => props.disp};
 export const Header = styled.div<{ wid?: string, hig?: string }>`
 width:${props => props.wid};
 height:${props => props.hig};
+@media(max-width:1000px){
+    margin-top:30px;
+}
 `
 export const Footer = styled.div<{ wid?: string, hig?: string }>`
 width:${props => props.wid};
@@ -51,7 +54,7 @@ src:${props => props.src};
 `
 export const StyledButton = styled.button<{
     bgc?: string, color?: string, hover?: string, wid?: string, hig?: string,
-    bordrad?: string, bord?: string, pad?: string
+    bordrad?: string, bord?: string, pad?: string, fz?: string
 }>`
 width:${props => props.wid};
 height: ${props => props.hig};
@@ -60,7 +63,7 @@ border-radius:${props => props.bordrad ? props.bordrad : '20px'};
 border:${props => props.bord ? props.bord : 'none'};
 font-weight:900;
 background-color: ${props => props.bgc};
-font-size:24px;
+font-size:${props => props.fz};
 font-style:italic;
 text-align:center;
 color:${props => props.color};
@@ -111,17 +114,20 @@ column-gap:${props => props.cgap};
 margin:${props => props.mar};
 justify-content:center;
 align-items:center;
+@media(max-width:660px){
+    grid-template-columns:repeat(2,50%)
+}
 `
 export const Container = styled.div`
 width:100%;
 max-width:1600px;
 margin:0 auto;
 `
-export const StyledInput = styled.input<{ textalign?: string }>`
+export const StyledInput = styled.input<{ textalign?: string, color?: string }>`
 border:none;
 border-bottom:solid red 3px;
 background-color: transparent;
-color:white;
+color:${props => props.color};
 width:90%;
 height:50px;
 font-size:40px;
@@ -133,11 +139,32 @@ text-align:${props => props.textalign}
 export const StyledUserMenu = styled.div<{ disp: string }>`
 position:absolute;
 display:${props => props.disp};
-width:300px;
+width:200px;
 height:30px;
 top:100%;
-right:0;
+right:0%;
 border:solid 1px white;
 border-radius:5px;
+`
+export const StyledPlayer = styled.div<{ disp: string }>`
+width:600px;
+height:400px;
+display:${props => props.disp};
+/* border:1px white solid; */
+position:fixed;
+bottom:50%;
+top:50%;
+left:50%;
+right:50%;
+transform: translate(-50%, -50%);
+@media(max-width:650px){
+    width:300px;
+    height:200px;
+}
+`
+export const StyledImgOverlay = styled.div<{ opacity: string, pevents: string }>`
+margin:50px 0;
+opacity:${props => props.opacity};
+pointer-events:${props => props.pevents};
 `
 

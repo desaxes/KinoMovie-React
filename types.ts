@@ -35,6 +35,14 @@ interface GameState {
     auth: boolean,
     loginInfo: loginInfo
 }
+interface msPage {
+    newMovies: ISearch[],
+    newSeries: ISearch[],
+    popularMovies: ISearch[],
+    popularSeries: ISearch[],
+    isLoading: boolean,
+    error: string,
+}
 type loginInfo = {
     user_id: number, authKey: string, name: string, authtoken?: string
 }
@@ -44,11 +52,11 @@ type searchMovies = {
     Response: string,
     Error?: string
 }
-type movieToCollection={
+type movieToCollection = {
     movieid: string,
     user_id: number,
     title: string,
-    poster:string,
+    poster: string,
     type: string,
     userrait: number,
     genre: string,

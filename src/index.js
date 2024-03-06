@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
 import reportWebVitals from './reportWebVitals';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
 import { setupStore } from './store/store.ts';
 import { BrowserRouter } from 'react-router-dom';
@@ -16,6 +16,15 @@ font-family:"LeagueGothic-Regular";
 box-sizing: border-box;
 }
 `
+const theme = {
+  colors: {
+    white: "#ffffff",
+    black: "#000000"
+  }
+}
+export const Theme = ({ children }) => (
+  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = setupStore()
 root.render(
@@ -23,7 +32,9 @@ root.render(
     <React.StrictMode>
       <GlobalStyles />
       <Provider store={store}>
-        <MantineProvider><App /></MantineProvider>
+        <MantineProvider>
+          <App />
+        </MantineProvider>
       </Provider>
     </React.StrictMode>
   </BrowserRouter>

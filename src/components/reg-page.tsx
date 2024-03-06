@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Flex, StyledBox, StyledButton, StyledInput, StyledTitle } from "../styledcomponents/styled-components.ts"
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,23 @@ type FormValues = {
     username: string
 }
 
-export const RegPage = () => {
+export const RegPage:FC<{ theme: string[] }> = (props) => {
+    
+    function getWindowSize() {
+        const { innerWidth, innerHeight } = window;
+        return { innerWidth, innerHeight };
+    }
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ mode: 'onBlur' });
     const dispatch = useAppDispatch()
     const [error, setError] = useState<boolean>(false)
@@ -38,10 +54,10 @@ export const RegPage = () => {
         <>
             <StyledBox wid='100%' mar='150px 0'>
                 <form onSubmit={handleSubmit(onSubmit)} action="">
-                    <Flex ml='auto' mr='auto' wid='30%' align='center' jstf='center' dir='column' gap='60px'>
-                        <StyledInput autoComplete='off' required minLength={5} {...register('login')} maxLength={12} defaultValue={''} placeholder='Login' type="text" textalign='center' />
-                        <StyledInput autoComplete='off' required minLength={5} {...register('password')} maxLength={12} defaultValue={''} placeholder='Password' type="password" textalign='center' />
-                        <StyledInput autoComplete='off' required minLength={5} {...register('username')} maxLength={12} defaultValue={''} placeholder='User Name' type="text" textalign='center' />
+                    <Flex ml='auto' mr='auto' wid={windowSize.innerWidth > 1000 ? '40%' : '100%'} align='center' jstf='center' dir='column' gap='60px'>
+                        <StyledInput color={props.theme[1]} autoComplete='off' required minLength={5} {...register('login')} maxLength={12} defaultValue={''} placeholder='Login' type="text" textalign='center' />
+                        <StyledInput color={props.theme[1]} autoComplete='off' required minLength={5} {...register('password')} maxLength={12} defaultValue={''} placeholder='Password' type="password" textalign='center' />
+                        <StyledInput color={props.theme[1]} autoComplete='off' required minLength={5} {...register('username')} maxLength={12} defaultValue={''} placeholder='User Name' type="text" textalign='center' />
                         {error && <StyledTitle fz='20px' color='red' dec='underline'>User with this login or name already exist</StyledTitle>}
                         {success && <StyledTitle fz='20px' color='green' dec='underline'>Account created!</StyledTitle>}
                         <Flex gap='20px' dir='column'>

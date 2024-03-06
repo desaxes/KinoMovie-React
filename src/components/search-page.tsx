@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from "../hooks/redux.ts";
 import { searchMoreMovies, searchMovies } from "../store/reducers/ActionCreators.ts";
 import { Movie } from './movie.tsx';
@@ -7,7 +7,23 @@ import { Title } from './title.tsx';
 import { useDebouncedState } from '@mantine/hooks';
 import { movieSlice } from '../store/reducers/main-reducer.ts';
 
-export const SearchPage = () => {
+export const SearchPage: FC<{ theme: string[] }> = (props) => {
+
+    function getWindowSize() {
+        const { innerWidth, innerHeight } = window;
+        return { innerWidth, innerHeight };
+    }
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
     const dispatch = useAppDispatch()
     const [searchValue, setSearchValue] = useDebouncedState<string>('', 1000)
     const movies = useAppSelector(state => state.gameReducer.searchMovies.Search)?.map(
@@ -30,22 +46,22 @@ export const SearchPage = () => {
     }
     return (
         <StyledBox wid='100%'>
-            <StyledBox wid='100%' mar='40px 0 20px 0'>
-                <Flex wid='100%' jstf='space-between'>
-                    <Title fz='44px' color={'White'}>Search Movies / Series</Title>
+            <StyledBox wid='100%' mar='60px 0 20px 0'>
+                <Flex wid='100%' jstf={windowSize.innerWidth > 1000 ? 'space-between' : 'center'}>
+                    {windowSize.innerWidth > 1000 && <Title fz='44px' color={props.theme[1]}>Search Movies / Series</Title>}
                     <Flex gap='20px' align='center'>
                         <StyledButton
                             wid='120px' hig='30px'
-                            hover={searchType === 'movie' ? '#fff' : '#ff0000'}
-                            color={searchType === 'movie' ? '#000' : '#fff'}
-                            bgc={searchType === 'movie' ? '#fff' : '#000'}
+                            hover={searchType === 'movie' ? props.theme[1] : '#ff0000'}
+                            color={searchType === 'movie' ? props.theme[0] : props.theme[1]}
+                            bgc={searchType === 'movie' ? props.theme[1] : props.theme[0]}
                             onClick={() => setSearchType('movie')}
                         >Movies</StyledButton>
                         <StyledButton
                             wid='120px' hig='30px'
-                            hover={searchType === 'series' ? '#fff' : '#ff0000'}
-                            color={searchType === 'series' ? '#000' : '#fff'}
-                            bgc={searchType === 'series' ? '#fff' : '#000'}
+                            hover={searchType === 'series' ? props.theme[1] : '#ff0000'}
+                            color={searchType === 'series' ? props.theme[0] : props.theme[1]}
+                            bgc={searchType === 'series' ? props.theme[1] : props.theme[0]}
                             onClick={() => setSearchType('series')}
                         >Series</StyledButton>
                     </Flex>
@@ -53,7 +69,7 @@ export const SearchPage = () => {
             </StyledBox>
             <StyledBox mar='30px 0'>
                 <Flex wid='100%' align='flex-end' jstf='center'>
-                    <StyledInput defaultValue={searchValue} onChange={(e) => setSearchValue(e.currentTarget.value)} autoComplete='off' placeholder='Search' type="text" />
+                    <StyledInput color={props.theme[1]} defaultValue={searchValue} onChange={(e) => setSearchValue(e.currentTarget.value)} autoComplete='off' placeholder='Search' type="text" />
                 </Flex>
             </StyledBox>
             {searchValue != '' && <Flex wid='100%' jstf='center'>

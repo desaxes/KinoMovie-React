@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Flex, StyledBox, StyledButton, StyledInput, StyledTitle } from "../styledcomponents/styled-components.ts"
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,23 @@ type FormValues = {
     password: string
 }
 
-export const AuthPage = () => {
+export const AuthPage: FC<{ theme: string[] }> = (props) => {
+
+    function getWindowSize() {
+        const { innerWidth, innerHeight } = window;
+        return { innerWidth, innerHeight };
+    }
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
     const navigate = useNavigate()
     const link = (url: string) => {
         navigate(url)
@@ -30,9 +46,9 @@ export const AuthPage = () => {
         <>
             {!auth && <StyledBox wid='100%' mar='150px 0'>
                 <form onSubmit={handleSubmit(onSubmit)} action="">
-                    <Flex ml='auto' mr='auto' wid='30%' align='center' jstf='center' dir='column' gap='60px'>
-                        <StyledInput autoComplete='off' required minLength={5} {...register('login')} maxLength={12} defaultValue={''} placeholder='Login' type="text" textalign='center' />
-                        <StyledInput autoComplete='off' required minLength={5} {...register('password')} maxLength={12} defaultValue={''} placeholder='Password' type="password" textalign='center' />
+                    <Flex ml='auto' mr='auto' wid={windowSize.innerWidth > 1000 ? '40%' : '100%'} align='center' jstf='center' dir='column' gap='60px'>
+                        <StyledInput color={props.theme[1]} autoComplete='off' required minLength={5} {...register('login')} maxLength={12} defaultValue={''} placeholder='Login' type="text" textalign='center' />
+                        <StyledInput color={props.theme[1]} autoComplete='off' required minLength={5} {...register('password')} maxLength={12} defaultValue={''} placeholder='Password' type="password" textalign='center' />
                         {error && <StyledTitle fz='20px' color='red' dec='underline'>Wrong Login or Password</StyledTitle>}
                         <Flex gap='20px' dir='column'>
                             <StyledButton type='submit' bgc="#ffffff" wid="160px" hig="40px" hover={'#ff0000'}>LogIn</StyledButton>
