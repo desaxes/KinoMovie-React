@@ -3,23 +3,11 @@ import { Flex, StyledBox, StyledButton, StyledTitle, StyledUserMenu } from "../s
 import { useAppDispatch, useAppSelector } from '../hooks/redux.ts'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { movieSlice } from '../store/reducers/main-reducer.ts'
+import { useWindowSize } from '../hooks/windowSize.ts'
 
 export const AuthMenu: FC<{ theme: string[], setTheme: Dispatch<SetStateAction<string[]>> }> = (props) => {
 
-    function getWindowSize() {
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-    }
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-        window.addEventListener('resize', handleWindowResize);
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     const auth = useAppSelector(state => state.gameReducer.auth)
     const location = useLocation()

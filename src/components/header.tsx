@@ -4,21 +4,9 @@ import { Flex, StyledImg, StyledTitle, StyledButton, Header, StyledUserMenu, Sty
 import logo from '../img/logo.png'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthMenu } from './auth-menu.tsx';
+import { useWindowSize } from '../hooks/windowSize.ts';
 export const HeaderComponent: FC<{ theme: string[], setTheme: Dispatch<SetStateAction<string[]>> }> = (props) => {
-    function getWindowSize() {
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-    }
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-        window.addEventListener('resize', handleWindowResize);
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
     const location = useLocation()
     const navigate = useNavigate()
     const link = (url: string) => {

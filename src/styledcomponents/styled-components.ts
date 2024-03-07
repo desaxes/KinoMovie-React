@@ -37,10 +37,12 @@ line-height:${props => props.lh};
 text-decoration:${props => props.dec};
 `
 export const StyledBox = styled.div<{
-    wid?: string, hig?: string, bdr?: string, mar?: string, pad?: string
+    wid?: string, hig?: string, bdr?: string, mar?: string, pad?: string, border?: string, bgc?: string
 }>`
 max-width:${props => props.wid};
 max-height: ${props => props.hig};
+border:${props => props.border};
+background-color: ${props => props.bgc};
 border-radius:${props => props.bdr};
 margin:${props => props.mar};
 padding:${props => props.pad};
@@ -54,7 +56,7 @@ src:${props => props.src};
 `
 export const StyledButton = styled.button<{
     bgc?: string, color?: string, hover?: string, wid?: string, hig?: string,
-    bordrad?: string, bord?: string, pad?: string, fz?: string
+    bordrad?: string, bord?: string, pad?: string, fz?: string, mar?:string
 }>`
 width:${props => props.wid};
 height: ${props => props.hig};
@@ -69,6 +71,7 @@ text-align:center;
 color:${props => props.color};
 transition: 0.3s;
 padding:${props => props.pad};
+margin:${props => props.mar};
 &:hover{
     background-color:${props => props.hover}; 
 }
@@ -146,9 +149,9 @@ right:0%;
 border:solid 1px white;
 border-radius:5px;
 `
-export const StyledPlayer = styled.div<{ disp: string }>`
-width:600px;
-height:400px;
+export const StyledPlayer = styled.div<{ disp: string, wid?:string,hig?:string }>`
+width:${props => props.wid};
+height: ${props => props.hig};
 display:${props => props.disp};
 /* border:1px white solid; */
 position:fixed;
@@ -159,7 +162,7 @@ right:50%;
 transform: translate(-50%, -50%);
 @media(max-width:650px){
     width:300px;
-    height:200px;
+    height:250px;
 }
 `
 export const StyledImgOverlay = styled.div<{ opacity: string, pevents: string }>`

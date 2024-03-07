@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../hooks/redux.ts';
 import { registAccount } from '../store/reducers/ActionCreators.ts';
+import { useWindowSize } from '../hooks/windowSize.ts';
 
 type FormValues = {
     login: string
@@ -13,20 +14,7 @@ type FormValues = {
 
 export const RegPage:FC<{ theme: string[] }> = (props) => {
     
-    function getWindowSize() {
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-    }
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-        window.addEventListener('resize', handleWindowResize);
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ mode: 'onBlur' });
     const dispatch = useAppDispatch()

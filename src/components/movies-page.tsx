@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import React from 'react'
 import { Title } from "./title.tsx"
 import { Flex, Grid, StyledBox, StyledImgOverlay } from "../styledcomponents/styled-components.ts"
@@ -16,6 +16,9 @@ export const MoviesPage: FC<{ theme: string[] }> = (props) => {
         e => <Movie key={e.imdbID} id={e.imdbID} title={e.Title} year={e.Year} type={e.Type} poster={e.Poster} />)
     const popularSeries = useAppSelector(state => state.mainPageReducer.popularSeries).map(
         e => <Movie key={e.imdbID} id={e.imdbID} title={e.Title} year={e.Year} type={e.Type} poster={e.Poster} />)
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    })
     return (
         <>
             <StyledBox wid='100%' mar='50px 0 20px 0'>

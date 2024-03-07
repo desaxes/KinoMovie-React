@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../hooks/redux.ts';
 import { logIn } from '../store/reducers/ActionCreators.ts';
+import { useWindowSize } from '../hooks/windowSize.ts';
 
 type FormValues = {
     login: string
@@ -12,20 +13,7 @@ type FormValues = {
 
 export const AuthPage: FC<{ theme: string[] }> = (props) => {
 
-    function getWindowSize() {
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-    }
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-        window.addEventListener('resize', handleWindowResize);
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     const navigate = useNavigate()
     const link = (url: string) => {

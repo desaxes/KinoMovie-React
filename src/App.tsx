@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Suspense, useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AppWrapper, Footer, Main, StyledBox, StyledTitle, Container, Flex } from './styledcomponents/styled-components.ts';
 import { SearchPage } from './components/search-page.tsx';
 import { HeaderComponent } from './components/header.tsx';

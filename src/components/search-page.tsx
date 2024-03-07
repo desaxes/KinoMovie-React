@@ -6,23 +6,11 @@ import { Flex, Grid, StyledBox, StyledButton, StyledInput } from '../styledcompo
 import { Title } from './title.tsx';
 import { useDebouncedState } from '@mantine/hooks';
 import { movieSlice } from '../store/reducers/main-reducer.ts';
+import { useWindowSize } from '../hooks/windowSize.ts';
 
 export const SearchPage: FC<{ theme: string[] }> = (props) => {
 
-    function getWindowSize() {
-        const { innerWidth, innerHeight } = window;
-        return { innerWidth, innerHeight };
-    }
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-        window.addEventListener('resize', handleWindowResize);
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     const dispatch = useAppDispatch()
     const [searchValue, setSearchValue] = useDebouncedState<string>('', 1000)
