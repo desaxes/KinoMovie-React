@@ -37,13 +37,14 @@ function App() {
             <StyledBox wid='100%' mar='0 5%'>
               <Suspense fallback={<Preloader />}>
                 <Routes>
-                  <Route path='/' element={<Navigate to='/main' />} />
-                  <Route path='/search' element={<SearchPage theme={theme} />} />
-                  <Route path='/moviepage/:id' element={<MoviePage />} />
-                  <Route path='/auth' element={<AuthPage theme={theme} />} />
-                  <Route path='/registration' element={<RegPage theme={theme} />} />
-                  <Route path='/collection' element={<Collection />} />
-                  <Route path='/main' element={<MoviesPage theme={theme} />} />
+                  <Route path='/' element={<Navigate to='/KinoMovie-React/main' />} />
+                  <Route path='/KinoMovie-React' element={<Navigate to='/KinoMovie-React/main' />} />
+                  <Route path='/KinoMovie-React/search' element={<SearchPage theme={theme} />} />
+                  <Route path='/KinoMovie-React/moviepage/:id' element={<MoviePage />} />
+                  <Route path='/KinoMovie-React/auth' element={<AuthPage theme={theme} />} />
+                  <Route path='/KinoMovie-React/registration' element={<RegPage theme={theme} />} />
+                  <Route path='/KinoMovie-React/collection' element={<Collection />} />
+                  <Route path='/KinoMovie-React/main' element={<MoviesPage theme={theme} />} />
                   <Route path='*' element={<Error />} />
                 </Routes>
               </Suspense>
