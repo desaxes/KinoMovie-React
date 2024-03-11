@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/KinoMovie-React/static/css/main.5c8ee8f0.css",
-    "main.js": "/KinoMovie-React/static/js/main.cde12f47.js",
+    "main.js": "/KinoMovie-React/static/js/main.0418a8d4.js",
     "reactPlayerYouTube.js": "/KinoMovie-React/static/js/reactPlayerYouTube.5d94bf57.chunk.js",
     "reactPlayerSoundCloud.js": "/KinoMovie-React/static/js/reactPlayerSoundCloud.b335558b.chunk.js",
     "reactPlayerVimeo.js": "/KinoMovie-React/static/js/reactPlayerVimeo.c884ec77.chunk.js",
@@ -24,7 +24,7 @@
     "static/media/Spin.svg": "/KinoMovie-React/static/media/Spin.2a1e2afd20769ed7d2400020207653c9.svg",
     "index.html": "/KinoMovie-React/index.html",
     "main.5c8ee8f0.css.map": "/KinoMovie-React/static/css/main.5c8ee8f0.css.map",
-    "main.cde12f47.js.map": "/KinoMovie-React/static/js/main.cde12f47.js.map",
+    "main.0418a8d4.js.map": "/KinoMovie-React/static/js/main.0418a8d4.js.map",
     "reactPlayerYouTube.5d94bf57.chunk.js.map": "/KinoMovie-React/static/js/reactPlayerYouTube.5d94bf57.chunk.js.map",
     "reactPlayerSoundCloud.b335558b.chunk.js.map": "/KinoMovie-React/static/js/reactPlayerSoundCloud.b335558b.chunk.js.map",
     "reactPlayerVimeo.c884ec77.chunk.js.map": "/KinoMovie-React/static/js/reactPlayerVimeo.c884ec77.chunk.js.map",
@@ -43,6 +43,6 @@
   },
   "entrypoints": [
     "static/css/main.5c8ee8f0.css",
-    "static/js/main.cde12f47.js"
+    "static/js/main.0418a8d4.js"
   ]
 }
