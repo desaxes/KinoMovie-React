@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
 const instance = axios.create({
-    baseURL: 'http://www.omdbapi.com',
+    baseURL: 'https://www.omdbapi.com',
 })
 const localInstance = axios.create({
     baseURL: 'https://authserver-nodejs-express-pgsql-production.up.railway.app/',
