@@ -12,7 +12,6 @@ export const Collection = () => {
         e => <Movie key={e.movieid} id={e.movieid} title={e.title} poster={e.poster} year={e.year} />)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
-    // const [switchMode, setSwitchMode] = useState<string>('col')
     const link = (url: string) => {
         navigate(url)
     }
@@ -23,16 +22,6 @@ export const Collection = () => {
         <>
             {auth ?
                 <div>
-                    {/* <Flex mt='30px' mb='30px' gap='20px' jstf='center'>
-                        <StyledButton
-                            pad='10px' bgc={switchMode === 'col' ? '#ff0000' : '#ffffff'}
-                            color={switchMode === 'col' ? '#ffffff' : '#000000'} onClick={() => setSwitchMode('col')}>
-                            Collection</StyledButton>
-                        <StyledButton
-                            pad='10px' bgc={switchMode === 'wl' ? '#ff0000' : '#ffffff'}
-                            color={switchMode === 'wl' ? '#ffffff' : '#000000'} onClick={() => setSwitchMode('wl')}>
-                            Watch Later</StyledButton>
-                    </Flex> */}
                     <Flex mt='50px'>
                         <Grid wid='100%' row={'repeat(2)'} col={'repeat(5,20%)'} rgap='20px' cgap='20px' mar='0 50px'>
                             {moviesComp}

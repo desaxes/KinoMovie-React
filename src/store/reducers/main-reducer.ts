@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { authorize, fetchMovieById, getMoviesToCollection, logIn, registAccount, searchMoreMovies, searchMovies } from "./ActionCreators.ts"
+import { authorize, fetchMovieById, getMoviesToCollection, logIn, searchMoreMovies, searchMovies } from "./ActionCreators.ts"
 
 const initialState: GameState = {
     searchMovies: {

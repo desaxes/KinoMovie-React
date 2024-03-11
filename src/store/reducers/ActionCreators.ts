@@ -1,6 +1,4 @@
-import { AppDispatch } from "../store";
 import axios from "axios";
-import { movieSlice } from "./main-reducer.ts";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
@@ -8,7 +6,7 @@ const instance = axios.create({
     baseURL: 'http://www.omdbapi.com',
 })
 const localInstance = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://authserver-nodejs-express-pgsql-production.up.railway.app/',
 })
 //Классический axios с RTK
 

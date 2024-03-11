@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Suspense, useEffect, useState } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { AppWrapper, Footer, Main, StyledBox, StyledTitle, Container, Flex } from './styledcomponents/styled-components.ts';
 import { SearchPage } from './components/search-page.tsx';
 import { HeaderComponent } from './components/header.tsx';
@@ -12,8 +12,8 @@ import { Preloader } from './components/preloader.tsx';
 import { useAppDispatch } from './hooks/redux.ts';
 import { authorize } from './store/reducers/ActionCreators.ts';
 import { MoviesPage } from './components/movies-page.tsx';
-import styled, { ThemeConsumer } from 'styled-components';
 import { Theme } from './index.js';
+import { Error } from './components/error.tsx';
 
 const Title = (props) => {
   return <StyledTitle {...props} >
@@ -44,7 +44,7 @@ function App() {
                   <Route path='/registration' element={<RegPage theme={theme} />} />
                   <Route path='/collection' element={<Collection />} />
                   <Route path='/main' element={<MoviesPage theme={theme} />} />
-                  {/* <Route path='*' element={<ErrorPage />} /> */}
+                  <Route path='*' element={<Error />} />
                 </Routes>
               </Suspense>
             </StyledBox>

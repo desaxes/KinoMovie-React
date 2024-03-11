@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Flex, StyledBox, StyledButton, StyledInput, StyledTitle } from "../styledcomponents/styled-components.ts"
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -28,6 +28,9 @@ export const AuthPage: FC<{ theme: string[] }> = (props) => {
         const response = await dispatch(logIn({ login: e.login, password: e.password }))
         if (response.meta.requestStatus === 'rejected') {
             setError(true)
+        }
+        else{
+            link('/main')
         }
     }
     return (

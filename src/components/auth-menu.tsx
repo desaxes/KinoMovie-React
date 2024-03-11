@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, FC, SetStateAction, useState } from 'react'
 import { Flex, StyledBox, StyledButton, StyledTitle, StyledUserMenu } from "../styledcomponents/styled-components.ts"
 import { useAppDispatch, useAppSelector } from '../hooks/redux.ts'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -51,7 +51,6 @@ export const AuthMenu: FC<{ theme: string[], setTheme: Dispatch<SetStateAction<s
                 </StyledBox> :
                 <StyledButton
                     wid={windowSize.innerWidth > 500 ? '200px' : '90px'} hig='50px'
-                    // hover={location.pathname === '/+' ? '#fff' : '#ff0000'}
                     fz='20px'
                     color={props.theme[1]}
                     bgc={props.theme[0]}

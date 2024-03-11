@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from "react-router-dom"
 import { Flex, StyledBox, StyledImg } from "../styledcomponents/styled-components.ts"
 import { Title } from './title.tsx'
-// @ts-ignore
 import image from '../img/no-image.jpg'
 
 export const Movie = (props: any) => {

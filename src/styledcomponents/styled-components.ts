@@ -26,7 +26,7 @@ width:${props => props.wid};
 height:${props => props.hig};
 `
 export const StyledTitle = styled.h1<{
-    fz?: string, wid?: string, align?: string, opacity?: string, hover?: string, lh?: string, dec?: string
+    fz?: string, wid?: string, align?: string, opacity?: string, hover?: string, lh?: string, dec?: string,mar?:string
 }>`
 color:${props => props.color};
 font-size: ${props => props.fz};
@@ -35,6 +35,7 @@ text-align:${props => props.align};
 opacity:${props => props.opacity};
 line-height:${props => props.lh};
 text-decoration:${props => props.dec};
+margin:${props => props.mar}
 `
 export const StyledBox = styled.div<{
     wid?: string, hig?: string, bdr?: string, mar?: string, pad?: string, border?: string, bgc?: string
@@ -56,7 +57,7 @@ src:${props => props.src};
 `
 export const StyledButton = styled.button<{
     bgc?: string, color?: string, hover?: string, wid?: string, hig?: string,
-    bordrad?: string, bord?: string, pad?: string, fz?: string, mar?:string
+    bordrad?: string, bord?: string, pad?: string, fz?: string, mar?: string
 }>`
 width:${props => props.wid};
 height: ${props => props.hig};
@@ -149,7 +150,7 @@ right:0%;
 border:solid 1px white;
 border-radius:5px;
 `
-export const StyledPlayer = styled.div<{ disp: string, wid?:string,hig?:string }>`
+export const StyledPlayer = styled.div<{ disp: string, wid?: string, hig?: string }>`
 width:${props => props.wid};
 height: ${props => props.hig};
 display:${props => props.disp};

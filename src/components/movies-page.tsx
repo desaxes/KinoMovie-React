@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react"
 import React from 'react'
 import { Title } from "./title.tsx"
-import { Flex, Grid, StyledBox, StyledImgOverlay } from "../styledcomponents/styled-components.ts"
+import { Flex, Grid, StyledBox } from "../styledcomponents/styled-components.ts"
 import { useAppSelector } from "../hooks/redux.ts"
 import { Movie } from "./movie.tsx"
 import ReactPlayer from "react-player"
