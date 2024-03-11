@@ -21,7 +21,7 @@ export const AuthMenu: FC<{ theme: string[], setTheme: Dispatch<SetStateAction<s
     const leaveAcc = () => {
         dispatch(movieSlice.actions.logOut())
         setMenu(false)
-        link('/main')
+        link('/KinoMovie-React/main')
     }
     const switchMenu = () => {
         setMenu(!menu)
@@ -54,14 +54,14 @@ export const AuthMenu: FC<{ theme: string[], setTheme: Dispatch<SetStateAction<s
                     fz='20px'
                     color={props.theme[1]}
                     bgc={props.theme[0]}
-                    onClick={() => link('/auth')}>{windowSize.innerWidth > 500 ? 'LogIn/Registration' : 'LogIn ☹'}
+                    onClick={() => link('/KinoMovie-React/auth')}>{windowSize.innerWidth > 500 ? 'LogIn/Registration' : 'LogIn ☹'}
                 </StyledButton>
             }
             <StyledButton
                 wid='30px' hig='30px'
                 hover={'#ff0000'}
-                color={location.pathname === '/main' ? props.theme[0] : props.theme[1]}
-                bgc={location.pathname === '/main' ? props.theme[1] : props.theme[0]}
+                color={location.pathname === '/KinoMovie-React/main' ? props.theme[0] : props.theme[1]}
+                bgc={location.pathname === '/KinoMovie-React/main' ? props.theme[1] : props.theme[0]}
                 onClick={setTheme}>☀</StyledButton>
         </Flex>
     )

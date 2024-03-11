@@ -30,7 +30,7 @@ export const AuthPage: FC<{ theme: string[] }> = (props) => {
             setError(true)
         }
         else{
-            link('/main')
+            link('/KinoMovie-React/main')
         }
     }
     return (

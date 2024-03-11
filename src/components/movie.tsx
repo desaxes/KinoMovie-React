@@ -7,7 +7,7 @@ import image from '../img/no-image.jpg'
 export const Movie = (props: any) => {
     const navigate = useNavigate()
     return (
-        <Flex hover='#ff0000' cursor='pointer' onClick={() => navigate('/moviepage/' + props.id)} dir='column' align='center' gap='10px'>
+        <Flex hover='#ff0000' cursor='pointer' onClick={() => navigate('/KinoMovie-React/moviepage/' + props.id)} dir='column' align='center' gap='10px'>
             <StyledBox wid='100%' hig='500px' mar='0 0 auto 0'>
                 <StyledImg
                     wid='100%' hig='100%' src={props.poster != 'N/A' ? props.poster : image} alt="" bdr='15%' />

@@ -31,7 +31,7 @@ export const Collection = () => {
                 : <StyledBox mar='200px 0'>
                     <Flex dir='column' align='center' gap='30px'>
                         <StyledTitle>Create Account or LogIn</StyledTitle>
-                        <StyledButton onClick={() => link('/auth')} bgc="#ffffff" hover={'#ff0000'} wid='160px' hig='40px'>Authorization</StyledButton>
+                        <StyledButton onClick={() => link('/KinoMovie-React/auth')} bgc="#ffffff" hover={'#ff0000'} wid='160px' hig='40px'>Authorization</StyledButton>
                     </Flex>
                 </StyledBox>}
         </>

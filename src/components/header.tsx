@@ -15,7 +15,7 @@ export const HeaderComponent: FC<{ theme: string[], setTheme: Dispatch<SetStateA
         <Header hig='50px'>
             <Flex hig='100%' jstf='space-around' gap='20px' align='center' dir={windowSize.innerWidth > 1000 ? 'row' : 'column'}>
                 <Flex align='center' gap='10px'>
-                    <Flex cursor='pointer' onClick={() => link('/main')} gap={windowSize.innerWidth > 1000 ? '20px' : '10px'} align='center'>
+                    <Flex cursor='pointer' onClick={() => link('/KinoMovie-React/main')} gap={windowSize.innerWidth > 1000 ? '20px' : '10px'} align='center'>
                         <StyledImg wid='85px' src={logo}></StyledImg>
                         <StyledTitle fz='24px'>KinoMovie</StyledTitle>
                     </Flex>
@@ -24,25 +24,25 @@ export const HeaderComponent: FC<{ theme: string[], setTheme: Dispatch<SetStateA
                 <Flex mb='15px' jstf='center' gap={windowSize.innerWidth > 1000 ? '20px' : '10px'} align={'center'} mr={windowSize.innerWidth > 1000 ? '7%' : '0'}>
                     <StyledButton
                         wid={windowSize.innerWidth > 1000 ? '120px' : '70px'} hig='50px'
-                        hover={location.pathname === '/main' ? props.theme[1] : '#ff0000'}
-                        color={location.pathname === '/main' ? props.theme[0] : props.theme[1]}
-                        bgc={location.pathname === '/main' ? props.theme[1] : props.theme[0]}
+                        hover={location.pathname === '/KinoMovie-React/main' ? props.theme[1] : '#ff0000'}
+                        color={location.pathname === '/KinoMovie-React/main' ? props.theme[0] : props.theme[1]}
+                        bgc={location.pathname === '/KinoMovie-React/main' ? props.theme[1] : props.theme[0]}
                         fz={windowSize.innerWidth > 1000 ? '24px' : '16px'}
-                        onClick={() => link('/main')}>Main</StyledButton>
+                        onClick={() => link('/KinoMovie-React/main')}>Main</StyledButton>
                     <StyledButton
                         wid={windowSize.innerWidth > 1000 ? '120px' : '70px'} hig='50px'
-                        hover={location.pathname === '/search' ? props.theme[1] : '#ff0000'}
-                        color={location.pathname === '/search' ? props.theme[0] : props.theme[1]}
-                        bgc={location.pathname === '/search' ? props.theme[1] : props.theme[0]}
+                        hover={location.pathname === '/KinoMovie-React/search' ? props.theme[1] : '#ff0000'}
+                        color={location.pathname === '/KinoMovie-React/search' ? props.theme[0] : props.theme[1]}
+                        bgc={location.pathname === '/KinoMovie-React/search' ? props.theme[1] : props.theme[0]}
                         fz={windowSize.innerWidth > 1000 ? '24px' : '16px'}
-                        onClick={() => link('/search')}>Search</StyledButton>
+                        onClick={() => link('/KinoMovie-React/search')}>Search</StyledButton>
                     <StyledButton
                         wid={windowSize.innerWidth > 1000 ? '120px' : '70px'} hig='50px'
-                        hover={location.pathname === '/collection' ? props.theme[1] : '#ff0000'}
-                        color={location.pathname === '/collection' ? props.theme[0] : props.theme[1]}
-                        bgc={location.pathname === '/collection' ? props.theme[1] : props.theme[0]}
+                        hover={location.pathname === '/KinoMovie-React/collection' ? props.theme[1] : '#ff0000'}
+                        color={location.pathname === '/KinoMovie-React/collection' ? props.theme[0] : props.theme[1]}
+                        bgc={location.pathname === '/KinoMovie-React/collection' ? props.theme[1] : props.theme[0]}
                         fz={windowSize.innerWidth > 1000 ? '24px' : '16px'}
-                        onClick={() => link('/collection')}>Collection</StyledButton>
+                        onClick={() => link('/KinoMovie-React/collection')}>Collection</StyledButton>
                 </Flex>
                 {windowSize.innerWidth > 1000 && <AuthMenu theme={props.theme} setTheme={props.setTheme} />}
             </Flex>
